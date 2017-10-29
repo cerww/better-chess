@@ -332,8 +332,8 @@ private:
 
 template<typename Container_t,typename pred>
 inline Container_t& remove_if_quick_all(Container_t& vec,pred fn){
-	//removes things faster!, loses order
-	vec.erase(std::partition(vec.begin(), vec.end(), not(fn)), vec.end());
+	//removes things faster!, loses order	
+	vec.erase(std::partition(vec.begin(), vec.end(), not(fn)), vec.end());	
 	return vec;
 }
 
@@ -357,6 +357,11 @@ private:
 	T* m_data;
 	size_t m_size = 0;
 };
+
+template<typename container_t,typename T>
+inline bool is_in(const container_t& abc, const T item){
+	return std::find(abc.begin(), abc.end(), item) != abc.end();
+}
 /*
 template<typename container,typename T>
 std::vector<std::vector<container::iterator::value_type>> splity(const container& cont,const T item){

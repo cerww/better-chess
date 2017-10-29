@@ -55,3 +55,5 @@ chess_board move_spot(chess_board b,cw::vector2i spot1, cw::vector2i spot2);
 inline bool is_valid_spot(const cw::vector2i spot) {
 	return spot.x < 8 && spot.x >= 0 && spot.y < 8 && spot.y >= 0;
 }
+
+chess_board get_starting_board();

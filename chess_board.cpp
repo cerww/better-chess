@@ -132,6 +132,31 @@ chess_board move_spot(chess_board b,cw::vector2i from, cw::vector2i to){
 	}return b;
 }
 
+chess_board get_starting_board(){
+	chess_board retVal = {};
+	retVal.getPiece({ 0,0 }) = chess_piece::BLACK_ROOK;
+	retVal.getPiece({ 1,0 }) = chess_piece::BLACK_HORSE;
+	retVal.getPiece({ 2,0 }) = chess_piece::BLACK_BISH;
+	retVal.getPiece({ 3,0 }) = chess_piece::BLACK_QUEEN;
+	retVal.getPiece({ 4,0 }) = chess_piece::BLACK_KING;
+	retVal.getPiece({ 5,0 }) = chess_piece::BLACK_BISH;
+	retVal.getPiece({ 6,0 }) = chess_piece::BLACK_HORSE;
+	retVal.getPiece({ 7,0 }) = chess_piece::BLACK_ROOK;
+	for (int i = 0; i<8; ++i) {
+		retVal.getPiece({ i,1 }) = chess_piece::BLACK_PAWN;
+		retVal.getPiece({ i,6 }) = chess_piece::WHITE_PAWN;
+	}
+	retVal.getPiece({ 0,7 }) = chess_piece::WHITE_ROOK;
+	retVal.getPiece({ 1,7 }) = chess_piece::WHITE_HORSE;
+	retVal.getPiece({ 2,7 }) = chess_piece::WHITE_BISH;
+	retVal.getPiece({ 3,7 }) = chess_piece::WHITE_QUEEN;
+	retVal.getPiece({ 4,7 }) = chess_piece::WHITE_KING;
+	retVal.getPiece({ 5,7 }) = chess_piece::WHITE_BISH;
+	retVal.getPiece({ 6,7 }) = chess_piece::WHITE_HORSE;
+	retVal.getPiece({ 7,7 }) = chess_piece::WHITE_ROOK;
+	return retVal;
+}
+
 std::experimental::generator<cw::vector2i> chess_board::get_moveable_spotsy(cw::vector2i spot) const{
 	const chess_piece piece = getPiece(spot);
 	switch (piece)

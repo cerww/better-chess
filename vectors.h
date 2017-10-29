@@ -40,6 +40,10 @@ namespace cw {
 	template<class T>
 	inline bool operator==(const vector2<T>& first, const vector2<T>& second) {
 		return first.x==second.x&&first.y==second.y;
+	}	
+	template<class T>
+	inline bool operator!=(const vector2<T>& first, const vector2<T>& second) {
+		return !(first==second);
 	}
 
 	typedef vector2<int> vector2i;

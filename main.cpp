@@ -1,9 +1,13 @@
 #include <iostream>
 #include <experimental\filesystem>
 #include "chess_board.h"
+#include "game.h"
 
 int main(){
+	if (glfwInit() == GLFW_FALSE) return -1;
 	//std::experimental::filesystem::path k = std::experimental::filesystem::current_path;
+	game g;
+	g.run();
 	chess_board b;
 	b.getPiece({ 0,0 }) = chess_piece::BLACK_ROOK;
 	b.getPiece({ 1,0 }) = chess_piece::BLACK_HORSE;

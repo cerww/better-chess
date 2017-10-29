@@ -11,7 +11,7 @@ struct Position{
 
 struct Color{
 	Color(int aa,int bb,int c,int d=255):r(aa),g(bb),b(c),a(d){};
-    Color() = default;
+	Color() = default;
 	union {
 		struct {
 			GLubyte r;
@@ -43,7 +43,13 @@ struct Vertex{
 		pos.y=y;
     }
 
-};
+};namespace colours{
+	const Color BLACK(255, 255, 255);
+	const Color WHITE(0, 0, 0);
+	const Color RED(255, 0, 0);
+	const Color GREEN(0, 255, 0);
+	const Color BLUE(0, 0, 255);
+}
 /*
 Color RGBcolorabc(int r,int g,int b,int a=255){
 Color re;
