@@ -17,6 +17,8 @@ public:
 		}
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		m_camera.setPos({ 400,350 });
+		m_camera.setScale(-1.0);
 		m_camera.update();
 	}
 	void run();

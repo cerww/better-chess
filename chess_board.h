@@ -50,6 +50,7 @@ bool is_same_colour(chess_piece, chess_piece);
 bool is_black(chess_piece);
 bool is_white(chess_piece);
 
+template<bool is_special_move = false>
 chess_board move_spot(chess_board b,cw::vector2i spot1, cw::vector2i spot2);
 
 inline bool is_valid_spot(const cw::vector2i spot) {
