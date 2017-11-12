@@ -1,5 +1,4 @@
-#ifndef MULTISTATEDRAWABLE_H
-#define MULTISTATEDRAWABLE_H
+#pragma once
 #include "drawableObj.h"
 
 
@@ -13,5 +12,3 @@ class multiStateDrawable:public drawableObj
 
     private:
 };
-
-#endif // MULTISTATEDRAWABLE_H

@@ -18,6 +18,10 @@ namespace math {
 		constexpr angleMesurement<num, den> getTerminalAngle()const {
 			return { angle - (getFullRotations()*(double)num / (double)den) };
 		}
+		angleMesurement<num,den>& reverse(){
+			angle *= -1;
+			return *this;
+		}
 	};
 
 	template<uint64_t num, uint64_t den>

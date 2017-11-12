@@ -6,19 +6,20 @@
 #include <chrono>
 #include <thread>
 #include <iostream>
+#include <numeric>
+
+constexpr int sampleSize = 5;
 class fpslimiter
 {
     public:
         fpslimiter();
-        void setMaxFPS(int newfps){_maxFPS=newfps;};
-        double getMaxFPS(){return _maxFPS;};
         void limitFPS();
-
-    protected:
-
+		double getAvgFPS()const{
+			return std::accumulate(m_times, m_times + sampleSize, 0.0) / (double)sampleSize;
+		};
+		double fps = 60.0;
     private:
-        double _prevFrame;
-        double _maxFPS = 60.0;
+		double m_times[sampleSize];
 };
 
 #endif // FPSLIMITER_H

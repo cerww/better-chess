@@ -1,14 +1,14 @@
 #pragma once
 #include "drawableObj.h"
 
-class slider {
+class slider:public Drawable<slider> {
 public:
 
 	slider() = default;
 	slider(glm::vec4,int = 0,int = 100,int = 50);
 	int getVal()const { return m_current; };
 	glm::vec4 getDims()const { return m_dims; };
-	void draw(drawRenderer&)const;
+	void Draw(drawRenderer&)const;
 	bool update(glm::vec2,int);
 private:
 	static texture bar;// = imgLoader::loadPNG("sliderBar.png");

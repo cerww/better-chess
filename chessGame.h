@@ -24,5 +24,6 @@ private:
 	size_t m_turns = 0;
 	std::array<texture, 6> m_textures;
 	button m_undoButton;
+	chessMoveGenerator m_g;
 };
 

@@ -1,6 +1,6 @@
 #ifndef ANIMATEDOBJ_H
 #define ANIMATEDOBJ_H
-#include "app.h"
+#include "window.h"
 #include <vector>
 #include <array>
 #include <string>
@@ -47,8 +47,8 @@ class animatedObj{
             animationMode mode;
             int speed;
         };
-        uint16_t m_currentFrame;
-        uint16_t m_endingFrame;
+        uint64_t m_currentFrame;
+        uint64_t m_endingFrame;
         std::string m_currentPart;
         framey* currentAni=nullptr;
         std::unordered_map<std::string,framey> m_animations;
@@ -63,16 +63,17 @@ class animatedObj{
         texture m_texture;
         glm::vec4 uv = glm::vec4(0.0f,0.0f,1.0f,1.0f);
 };
-class renderAnimatedObjects:public renderer{
+class renderAnimatedObjects:public renderer<renderAnimatedObjects>{
     public:
         renderAnimatedObjects();
         //renderAnimatedObjects();
         //renderAnimatedObjects();
-        void render(const camera2D& cam) override;
+        void Render(const camera2D& cam);
         virtual void drawObj(animatedObj *);
         //void start(){spriteB.begin();};
     private:
         std::vector<animatedObj*> m_objs;
-        //void getAni
+		GLSLthingy glslProg;
+		SpriteBatch spriteB;
 };
 #endif // ANIMATEDOBJ_H

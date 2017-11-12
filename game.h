@@ -1,5 +1,5 @@
 #pragma once
-#include "cw/app.h"
+#include "cw/window.h"
 #include "cw/drawableObj.h"
 #include "chessGame.h"
 
@@ -18,15 +18,15 @@ public:
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		m_camera.setPos({ 400,350 });
-		m_camera.setScale(-1.0);
+		//m_camera.setScale(-1.0);
 		m_camera.update();
 	}
 	void run();
-	app& getWindow() { return m_window; }
+	window& getWindow() { return m_window; }
 	camera2D& getCamera() { return m_camera; }
 	drawRenderer& getRenderer() { return m_renderer; };
 private:
-	app m_window = glfwCreateWindow(800, 700, "", NULL, NULL);
+	window m_window = window(glfwCreateWindow(800, 700, "", NULL, NULL));
 	camera2D m_camera = camera2D(800,700);
 	drawRenderer m_renderer;
 	std::unique_ptr<boardGameBase> m_boardGame;

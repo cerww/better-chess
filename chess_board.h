@@ -33,13 +33,34 @@ public:
 	const chess_piece& getPiece(cw::vector2i spot) const{
 		return m_board[spot.x][spot.y];
 	};
-	std::vector<cw::vector2i> get_moveable_spots(cw::vector2i)const;
 	uint8_t castleing_status = 0;//left white, right white, left black, right black,white king, black king
 	cw::vector2i prev_to = {};
 	cw::vector2i prev_from = {};
+	bool is_check = false;
+	cw::vector2i pawnPromote = { 9,9 };
 private:
 	std::array<std::array<chess_piece, 8>, 8> m_board = {};
-	std::experimental::generator<cw::vector2i> get_moveable_spotsy(cw::vector2i)const;
+};
+
+class chessMoveGenerator {
+public:
+	std::vector<cw::vector2i> get_moveable_spots(const chess_board& m_board,cw::vector2i)const;
+private:
+	std::experimental::generator<cw::vector2i> get_moveable_spotsy(const chess_board& m_board,const cw::vector2i)const;
+};
+
+struct pawnPromoter {
+	//template<
+	static constexpr int QUEEN = 2;
+	static constexpr int HORSE = 1;
+	static constexpr int BISH = 4;
+	static constexpr int ROOK = 5;
+
+	template<int c>
+	static void promotePawn(chess_board& b){
+		b.getPiece(b.pawnPromote) = (chess_piece)((int)b.getPiece(b.pawnPromote) + c);
+		b.pawnPromote = { 9,9 };
+	}
 };
 
 std::pair<cw::vector2i, cw::vector2i> get_king_spots(const chess_board&);

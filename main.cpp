@@ -33,10 +33,6 @@ int main(){
 	b.getPiece({ 5,7 }) = chess_piece::WHITE_BISH;
 	b.getPiece({ 6,7 }) = chess_piece::WHITE_HORSE;
 	b.getPiece({ 7,7 }) = chess_piece::WHITE_ROOK;
-	int a, ba;
-	std::cin >> a >> ba;
-	for (auto i : b.get_moveable_spots({ a,ba }))
-		std::cout << i.x << ' ' << i.y << '\n';
 	int qweuoyqwedas;
 	std::cin >> qweuoyqwedas;
 	return 0;

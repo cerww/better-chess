@@ -26,11 +26,29 @@ inline bool boxInBox(const glm::vec4 b1, const glm::vec4 b2) {
 		pointInBox(b1, { b2.x + b2.z,b2.y + b2.w }) ||
 		pointInBox(b1, { b2.x,b2.y + b2.w });
 }
-
+inline bool circleInCircle(
+	glm::vec2 p1,int r1,
+	glm::vec2 p2,int r2) {
+	return glm::length(p1 - p2) < r1 + r2;
+}
 inline bool inRange(const double a, double lower, double upper) {
 	if (upper < lower)
 		std::swap(upper, lower);
 	return a >= lower && a <= upper;
+}
+
+inline constexpr double xclampy(const double lb, const double ub, const double i) {
+	if (i>lb&&i<ub) {
+		return i - ((lb + ub) / 2) >= 0 ? ub : lb;
+	}return i;
+}
+
+inline glm::vec2 xclampy(const glm::vec2 lb, const glm::vec2 ub, const glm::vec2 i) {
+	return { xclampy(lb.x,ub.x,i.x),xclampy(lb.y,ub.y,i.y) };
+}
+
+inline glm::vec3 xclampy(const glm::vec3 lb, const glm::vec3 ub, const glm::vec3 i) {
+	return { xclampy(lb.x,ub.x,i.x),xclampy(lb.y,ub.y,i.y),xclampy(lb.z,ub.z,i.z) };
 }
 
 inline std::tuple<glm::vec2, bool> doLinesIntersect(const glm::vec2 p1s, const glm::vec2 p1e,
@@ -97,5 +115,14 @@ inline constexpr T clamp(T lb,T ub,T thing) {
 
 template<typename T,typename comp>
 inline constexpr T clamp(T lb, T ub, T thing,comp c) {
-	return c(thing, lb) ? lb : comp(ub, thing) ? ub : thing;
+	return c(thing, lb) ? lb : c(ub, thing) ? ub : thing;
+}
+
+inline glm::vec2 unitVec(math::radians r) {
+	return { math::cos(r),math::sin(r) };
+}
+
+inline glm::vec2 rotate(glm::vec2 dir, math::radians angle) {
+	return glm::vec2(	dir.x*math::cos(angle) - dir.y*math::sin(angle),
+						dir.x*math::sin(angle) + dir.y*math::cos(angle));
 }

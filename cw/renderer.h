@@ -5,15 +5,15 @@
 #include "GLSLthingy.h"
 #include "camera2D.h"
 #include <memory>
-class renderer //interface class 
+
+template<typename Renderer>
+class renderer//interface class 
 {
     public:
         renderer() = default;
-        virtual void render(const camera2D& cam) = 0;
-    protected:
-        GLSLthingy glslProg;
-        SpriteBatch spriteB;
-    private:
+		void render(const camera2D& cam){
+			static_cast<Renderer*>(this)->Render(cam);
+		};
 };
 
 #endif // RENDERER_H

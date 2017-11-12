@@ -1,8 +1,11 @@
 #include "game.h"
+//#include "cw/lin"
+
 
 void game::run(){
 	m_boardGame = std::make_unique<chessGame>(*this);
 	glClearColor(1.0, 1.0, 1.0, 1.0);
+
 	while (!glfwWindowShouldClose(m_window.getWindowPtr()))	{
 		m_window.update();
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
